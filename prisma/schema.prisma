@@ -1,15 +1,265 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  provider = "mysql"
+  //url      = env("DATABASE_URL")
+}
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+
+model aluno {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  NrMatricula Int 
+  DataNasc DateTime
+  genero String @db.VarChar(1)
+  morada String @db.VarChar(100)
+  telefone Int
+  idade Int
+  email String @db.VarChar(100)
+  id_turma Int
+  Turma turma @relation(fields: [id_turma], references: [id])
+  id_documento Int
+  Documento documento @relation(fields: [id_documento], references: [id])
+  presencas presenca[]
+  historico_matriculas historico_matricula[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("aluno")
 }
+
+
+model professor {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  BI String @db.VarChar(100)
+  telefone Int
+  email String @db.VarChar(100)
+  Avaliacaos avaliacao[]
+  id_multipla Int
+  Mutipla multipla @relation(fields: [id], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("professor")
+}
+
+
+model documento {
+  id Int @id @default(autoincrement())
+  tipodedocumentos String @db.VarChar(100)
+  Alunos aluno[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("documento")
+}
+
+
+model disciplina {
+  id Int @id @default(autoincrement())
+  tipo_disciplina String @db.VarChar(100)
+  presencas presenca[]
+  id_multipla Int
+  Mutipla multipla @relation(fields: [id], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("disciplina")
+}
+
+model turma {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  Alunos aluno[]
+  id_multipla Int
+  Mutipla multipla @relation(fields: [id], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("turma")
+}
+
+model curso {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  duração DateTime
+  coordenador String @db.VarChar(100)
+  id_faculdade Int
+  faculdades faculdades @relation(fields: [id_faculdade], references: [id])
+  id_multipla Int
+  Mutipla multipla @relation(fields: [id], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("curso")
+}
+
+model avaliacao {
+  id Int @id @default(autoincrement())
+  TipodeAvalição String @db.VarChar(100)
+  nota Int
+  data DateTime
+  id_professor Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("avaliacao")
+}
+
+model pagamento {
+  id Int @id @default(autoincrement())
+  datadoPagamento DateTime
+  valor Int
+  metodo_de_pagamento String @db.VarChar(100)
+  Faturas fatura[]
+  Recibos recibo[]
+  id_monumento Int
+  Monumentos monumento @relation(fields: [id_monumento], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("pagamento")
+}
+
+model fatura {
+  id Int @id @default(autoincrement())
+  nr_fatura Int
+  dataEMISSÃO DateTime
+  Valor_Total Int
+  id_pagamento Int
+  Pagamento pagamento @relation(fields: [id_pagamento], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("fatura")
+}
+
+model recibo {
+  id Int @id @default(autoincrement())
+  NrRecibo Int
+  dataEmissão DateTime
+  id_pagamento Int
+  Pagamento pagamento @relation(fields: [id_pagamento], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("recibo")
+}
+
+model notificacao{
+  id Int @id @default(autoincrement())
+  tipo_notificacoes String @db.VarChar(100)
+  data_envio DateTime
+  informacao String @db.VarChar(100)
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("notificacao")
+}
+
+
+
+
+model presenca{
+  id Int @id @default(autoincrement())
+  data_presenca DateTime
+  status_presenca String @db.VarChar(1)
+  id_aluno Int
+  Aluno aluno @relation(fields: [id], references: [id])
+  id_disciplina Int
+  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("presenca")
+}
+
+model cargo{
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  descricao String @db.VarChar(100)
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("cargo")
+}
+
+
+model historico_matricula{
+  id Int @id @default(autoincrement())
+  id_aluno Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  id_matricula Int
+  Matricula matricula @relation(fields: [id_matricula], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("historico_matricula")
+}
+
+model faculdades{
+  id Int @id @default(autoincrement())
+  tipos_faculdades String @db.VarChar(100)
+  Cursos curso[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("faculdades")
+}
+
+model monumento{
+  id Int @id @default(autoincrement())
+  referencia Int
+  propina Int
+  Pagamentos pagamento []
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("monumento")
+}
+
+model relatorio{
+  id Int @id @default(autoincrement())
+  tipo_relatorio String @db.VarChar(100)
+  data_geracao DateTime
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("relatorio")
+}
+
+model matricula{
+  id Int @id @default(autoincrement())
+  ano_letivo Int
+  data_matricula DateTime
+  estado_matricula String @db.VarChar(100)
+  Historico_matriculas historico_matricula []
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("matricula")
+}
+
+model multipla{
+  id Int @id @default(autoincrement())
+  turmas turma[]
+  cursos curso[]
+  Disciplinas disciplina[]
+  Professores professor[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("multipla")
+}
+
+
+
+
+
+
+
