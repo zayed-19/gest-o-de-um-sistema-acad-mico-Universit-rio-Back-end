@@ -1,0 +1,25 @@
+{
+  "name": "gest-o-de-um-sistema-acad-mico-universit-rio-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end/issues"
+  },
+  "homepage": "https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end#readme",
+  "dependencies": {
+    "@prisma/client": "^7.0.1",
+    "express": "^5.1.0",
+    "prisma": "^7.0.1"
+  }
+}

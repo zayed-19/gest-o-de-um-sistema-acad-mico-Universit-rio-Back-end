@@ -1,0 +1,52 @@
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient()
+const Matricula = prisma.matricula
+
+const createMatricula = async(data) =>{
+
+    const result = await Matricula.create({
+        data:{
+             ano_letivo: data.ano_letivo,
+             data_matricula: data.data_matricula,
+             estado_matricula: data.estado_matricula
+
+        }
+    })
+    return result
+}
+
+const getMatricula = async() =>{
+
+    const result = await Matricula.findMany()
+    return result
+}
+
+ const getMatriculaById = async(id) =>{
+    const result = await Matricula.findFirst({where:{id}})
+    return result
+}
+ const updateMatricula = async(data, id) =>{
+    const result = await Matricula.update({
+        data:{
+             ano_letivo: data.ano_letivo,
+             data_matricula: data.data_matricula,
+             estado_matricula: data.estado_matricula
+            
+        },
+        where:{id}
+    })
+    return result
+}
+
+const deleteMatricula = async(id) =>{
+    const result = await Matricula.delete({where:{id}})
+    return result
+}
+
+module.exports ={
+    createMatricula,
+    getMatricula,
+    getMatriculaById,
+    deleteMatricula,
+    updateMatricula
+}
