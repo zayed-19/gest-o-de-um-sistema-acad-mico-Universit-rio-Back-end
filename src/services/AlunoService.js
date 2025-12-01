@@ -14,7 +14,15 @@ const createAluno = async(data) =>{
              genero: data.genero,
              morada: data.morada,
              telefone: data.telefone,
-             email: data.email
+             email: data.email,
+             turma: data.turma,
+             id_turma: data.id_turma,
+             id_documento: data.id_documento,
+             Documento: data.Documento,
+             presencas: data.presencas,
+             historico_matriculas: data.historico_matriculas
+
+
             
         }
     })

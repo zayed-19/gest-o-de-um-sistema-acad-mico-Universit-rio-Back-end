@@ -7,7 +7,8 @@ const createCargo = async(data) =>{
     const result = await Cargo.create({
         data:{
             nome: data.nome,
-            descricao: data.descricao
+            descricao: data.descricao,
+            id: data.id
         }
     })
     return result

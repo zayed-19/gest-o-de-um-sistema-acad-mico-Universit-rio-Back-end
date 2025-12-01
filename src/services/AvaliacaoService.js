@@ -9,7 +9,9 @@ const createAvaliacao = async(data) =>{
              nota: data.nota,
             data: data.data,
             TipodeAvaliçãoId: data.TipodeAvaliçãoId,
-            id_professor: data.id_professor
+            id_professor: data.id_professor,
+            Professor: data.Professor,
+            
         }
     })
     return result

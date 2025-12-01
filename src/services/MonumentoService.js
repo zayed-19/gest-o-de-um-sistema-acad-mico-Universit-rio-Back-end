@@ -20,7 +20,7 @@ const getMonumento = async() =>{
     return result
 }
 
- const getMatriculaById = async(id) =>{
+ const getMonumentoById = async(id) =>{
     const result = await Monumento.findFirst({where:{id}})
     return result
 }
@@ -44,7 +44,7 @@ const deleteMonumento = async(id) =>{
 module.exports ={
     createMonumento,
     getMonumento,
-    getMatriculaById,
+    getMonumentoById,
     deleteMonumento,
     updateMonumento
 }

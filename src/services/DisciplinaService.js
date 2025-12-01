@@ -8,8 +8,9 @@ const createDisciplina = async(data) =>{
         data:{
                tipo_disciplina: data.tipo_disciplina,
                id_multipla: data.id_multipla,
-               
-               
+               Mutipla: data.Mutipla,
+               id_disciplina: data.id_disciplina,
+               presencas: data.presencas
         }
     })
     return result

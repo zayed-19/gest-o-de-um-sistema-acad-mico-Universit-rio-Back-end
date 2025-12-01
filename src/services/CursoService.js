@@ -10,7 +10,11 @@ const createCurso = async(data) =>{
             duração: data.duração,
             coordenador: data.coordenador,
             id_faculdade: data.id_faculdade,
-            id_multipla: data.id_multipla
+            id_multipla: data.id_multipla,
+            faculdades: data.faculdades,
+            id_multipla: data.id_multipla,
+            Mutipla: data.Mutipla,
+            id_curso: data.id_curso
         }
     })
     return result
