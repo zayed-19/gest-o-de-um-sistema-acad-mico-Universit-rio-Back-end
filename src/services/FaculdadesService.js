@@ -6,7 +6,8 @@ const createFaculdades = async(data) =>{
 
     const result = await Faculdades.create({
         data:{
-              tipos_faculdades: data.tipos_faculdades
+              tipos_faculdades: data.tipos_faculdades,
+              cursos: data.cursos
         }
     })
     return result

@@ -8,7 +8,10 @@ const createPagamento = async(data) => {
            metodo_de_pagamento: data.metodo_de_pagamento,
             valor: data.valor,
             id_monumento: data.id_monumento,
-            datadoPagamento: data.datadoPagamento
+            datadoPagamento: data.datadoPagamento,
+            Recibos: data.Recibos,
+            Faturas: data.Faturas,
+            Monumento: data.Monumento
         }
     })
     return result

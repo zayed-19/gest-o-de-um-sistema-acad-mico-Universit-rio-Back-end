@@ -9,7 +9,9 @@ const createFatura = async(data) =>{
             nr_fatura: data.nr_fatura,
            dataEMISSÃO: data.dataEMISSÃO,
            Valor_Total: data.Valor_Total,
-           id_pagamento: data.id_pagamento    
+           id_pagamento: data.id_pagamento,
+           pagamento: data.pagamento,
+            
         }
     })
     return result

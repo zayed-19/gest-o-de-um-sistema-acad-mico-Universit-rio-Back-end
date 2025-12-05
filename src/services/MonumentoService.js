@@ -7,7 +7,8 @@ const createMonumento = async(data) =>{
     const result = await Monumento.create({
         data:{
            referencia: data.referencia,
-           propina: data.propina
+           propina: data.propina,
+           Pagamento: data.Pagamento
 
         }
     })
@@ -20,7 +21,7 @@ const getMonumento = async() =>{
     return result
 }
 
- const getMonumentoById = async(id) =>{
+ const getMatriculaById = async(id) =>{
     const result = await Monumento.findFirst({where:{id}})
     return result
 }
@@ -44,7 +45,7 @@ const deleteMonumento = async(id) =>{
 module.exports ={
     createMonumento,
     getMonumento,
-    getMonumentoById,
+    getMatriculaById,
     deleteMonumento,
     updateMonumento
 }

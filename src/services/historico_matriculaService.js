@@ -8,7 +8,10 @@ const createhistorico_matricula = async(data) =>{
     const result = await historico_matricula.create({
         data:{
              id_aluno: data.id_aluno,
-             id_matricula: data.id_matricula
+             id_matricula: data.id_matricula,
+             matricula: data.matricula,
+             Aluno: data.Aluno
+
         }
     })
     return result

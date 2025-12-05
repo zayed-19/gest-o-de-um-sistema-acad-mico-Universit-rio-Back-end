@@ -8,7 +8,9 @@ const createMatricula = async(data) =>{
         data:{
              ano_letivo: data.ano_letivo,
              data_matricula: data.data_matricula,
-             estado_matricula: data.estado_matricula
+             estado_matricula: data.estado_matricula,
+             historico_matricula: data.historico_matricula,
+             id_aluno: data.id_aluno 
 
         }
     })
