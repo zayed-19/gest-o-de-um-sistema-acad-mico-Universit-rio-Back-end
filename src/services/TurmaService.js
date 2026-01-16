@@ -6,7 +6,10 @@ const createTurma = async(data) => {
     const result = await Turma.create({
         data: {
             nome: data.nome,
-            id_multipla: data.id_multipla
+            id_multipla: data.id_multipla,
+            id_multipla: data.id_multipla,
+            multipla: data.multipla,
+            Aluno: data.Aluno
         }
     });
     return result;

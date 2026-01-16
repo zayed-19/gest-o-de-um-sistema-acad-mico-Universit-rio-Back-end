@@ -7,7 +7,8 @@ const createRecibo = async(data) =>{
         data:{
              NrRecibo: data.NrRecibo,
              dataEmissão: data.dataEmissão,
-             id_pagamento: data.id_pagamento
+             id_pagamento: data.id_pagamento,
+             Pagamento: data.Pagamento
         }
     })
     return result

@@ -8,7 +8,9 @@ const createPresenca = async(data) => {
            data_presenca: data.data_presenca,
             status_presenca: data.status_presenca,
             id_aluno: data.id_aluno,
-            id_disciplina: data.id_disciplina
+            id_disciplina: data.id_disciplina,
+            Aluno: data.Aluno,
+            Disciplina: data.Disciplina
         }
     });
     return result;

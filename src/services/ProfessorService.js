@@ -9,7 +9,10 @@ const createProfessor = async(data) => {
               BI: data.BI,
               telefone: data.telefone,
               email: data.email,
-              id_multipla: data.id_multipla
+              id_multipla: data.id_multipla,
+              Avaliacao: data.Avaliacao,
+              id_multipla: data.id_multipla,
+              multipla: data.multipla
         }
     });
     return result;
