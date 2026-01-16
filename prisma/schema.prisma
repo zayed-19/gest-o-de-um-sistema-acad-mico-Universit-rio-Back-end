@@ -1,6 +1,6 @@
 datasource db {
   provider = "mysql"
-  //url      = env("DATABASE_URL")
+  
 }
 
 generator client {
@@ -25,6 +25,8 @@ model aluno {
   Documento documento @relation(fields: [id_documento], references: [id])
   presencas presenca[]
   historico_matriculas historico_matricula[]
+  avaliacaos avaliacao[]
+  pagamentos pagamento[]
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -39,8 +41,8 @@ model professor {
   telefone Int
   email String @db.VarChar(100)
   Avaliacaos avaliacao[]
-  id_multipla Int
-  Mutipla multipla @relation(fields: [id], references: [id])
+  cursos curso[]
+ 
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -63,8 +65,8 @@ model disciplina {
   id Int @id @default(autoincrement())
   tipo_disciplina String @db.VarChar(100)
   presencas presenca[]
-  id_multipla Int
-  Mutipla multipla @relation(fields: [id], references: [id])
+  
+  
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -74,9 +76,9 @@ model disciplina {
 model turma {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(100)
-  Alunos aluno[]
-  id_multipla Int
-  Mutipla multipla @relation(fields: [id], references: [id])
+  Aluno aluno[]
+  Id_curso Int
+  curso curso @relation(fields: [Id_curso], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -87,11 +89,11 @@ model curso {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(100)
   duração DateTime
-  coordenador String @db.VarChar(100)
+  id_professor Int
+  professor professor @relation(fields: [id_professor], references: [id])
+  Turma turma[]
   id_faculdade Int
   faculdades faculdades @relation(fields: [id_faculdade], references: [id])
-  id_multipla Int
-  Mutipla multipla @relation(fields: [id], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -103,6 +105,8 @@ model avaliacao {
   TipodeAvalição String @db.VarChar(100)
   nota Int
   data DateTime
+  id_aluno Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
   id_professor Int
   Professor professor @relation(fields: [id_professor], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
@@ -115,11 +119,12 @@ model pagamento {
   id Int @id @default(autoincrement())
   datadoPagamento DateTime
   valor Int
-  metodo_de_pagamento String @db.VarChar(100)
+  id_Aluno Int
+  Aluno aluno @relation(fields: [id_Aluno], references: [id])
   Faturas fatura[]
   Recibos recibo[]
-  id_monumento Int
-  Monumentos monumento @relation(fields: [id_monumento], references: [id])
+  id_emolumento Int
+  Emolumento emolumento @relation(fields: [id_emolumento], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -165,12 +170,12 @@ model notificacao{
 
 
 
-model presenca{
+model presenca {
   id Int @id @default(autoincrement())
   data_presenca DateTime
   status_presenca String @db.VarChar(1)
   id_aluno Int
-  Aluno aluno @relation(fields: [id], references: [id])
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
   id_disciplina Int
   Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
@@ -212,15 +217,14 @@ model faculdades{
   @@map("faculdades")
 }
 
-model monumento{
+model emolumento{
   id Int @id @default(autoincrement())
   referencia Int
-  propina Int
   Pagamentos pagamento []
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
-  @@map("monumento")
+  @@map("emolumento")
 }
 
 model relatorio{
@@ -245,17 +249,7 @@ model matricula{
   @@map("matricula")
 }
 
-model multipla{
-  id Int @id @default(autoincrement())
-  turmas turma[]
-  cursos curso[]
-  Disciplinas disciplina[]
-  Professores professor[]
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
 
-  @@map("multipla")
-}
 
 
 
