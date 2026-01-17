@@ -1,4 +1,6 @@
+require("dotnev").config();
 const express = require("express");
+const routesRoot = require("./src/routes/index");
 
 const app = express();
 const PORT = 3002;
@@ -8,6 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.json());
+app.use("/api/v1", routesRoot);
 
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);

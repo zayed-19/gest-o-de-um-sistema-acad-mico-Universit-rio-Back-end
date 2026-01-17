@@ -1,194 +1,30 @@
+generator client {
+  provider = "prisma-client-js"  
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
+}
+
 datasource db {
   provider = "mysql"
-}
-
-generator client {
-  provider = "prisma-client"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
-  output = "./generated/prisma-client"
-  moduleFormat = "cjs"
-}
-
-
-model aluno {
-  id Int @id @default(autoincrement())
-  nome String @db.VarChar(100)
-  NrMatricula Int 
-  DataNasc DateTime
-  genero String @db.VarChar(1)
-  morada String @db.VarChar(100)
-  telefone Int
-  idade Int
-  email String @db.VarChar(100)
-  id_turma Int
-  Turma turma @relation(fields: [id_turma], references: [id])
-  id_documento Int
-  Documento documento @relation(fields: [id_documento], references: [id])
-  presencas presenca[]
-  historico_matriculas historico_matricula[]
-  avaliacaos avaliacao[]
-  pagamentos pagamento[]
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("aluno")
-}
-
-
-model professor {
-  id Int @id @default(autoincrement())
-  nome String @db.VarChar(100)
-  BI String @db.VarChar(100)
-  telefone Int
-  email String @db.VarChar(100)
-  Avaliacaos avaliacao[]
-  cursos curso[]
- 
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("professor")
-}
-
-
-model documento {
-  id Int @id @default(autoincrement())
-  tipodedocumentos String @db.VarChar(100)
-  Alunos aluno[]
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("documento")
-}
-
-
-model disciplina {
-  id Int @id @default(autoincrement())
-  tipo_disciplina String @db.VarChar(100)
-  presencas presenca[]
+  //url      = env("DATABASE_URL")
   
-  
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("disciplina")
 }
 
-model turma {
+model notificacoes{
   id Int @id @default(autoincrement())
-  nome String @db.VarChar(100)
-  Aluno aluno[]
-  Id_curso Int
-  curso curso @relation(fields: [Id_curso], references: [id])
+  tipo_notificacao String @db.VarChar(100)
+  data_envio DateTime @db.Date
+  informacao String @db.LongText
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
-  @@map("turma")
-}
 
-model curso {
-  id Int @id @default(autoincrement())
-  nome String @db.VarChar(100)
-  duração DateTime
-  id_professor Int
-  professor professor @relation(fields: [id_professor], references: [id])
-  Turma turma[]
-  id_faculdade Int
-  faculdades faculdades @relation(fields: [id_faculdade], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("curso")
-}
-
-model avaliacao {
-  id Int @id @default(autoincrement())
-  TipodeAvalição String @db.VarChar(100)
-  nota Int
-  data DateTime
-  id_aluno Int
-  Aluno aluno @relation(fields: [id_aluno], references: [id])
-  id_professor Int
-  Professor professor @relation(fields: [id_professor], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("avaliacao")
-}
-
-model pagamento {
-  id Int @id @default(autoincrement())
-  datadoPagamento DateTime
-  valor Int
-  id_Aluno Int
-  Aluno aluno @relation(fields: [id_Aluno], references: [id])
-  Faturas fatura[]
-  Recibos recibo[]
-  id_emolumento Int
-  Emolumento emolumento @relation(fields: [id_emolumento], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("pagamento")
-}
-
-model fatura {
-  id Int @id @default(autoincrement())
-  nr_fatura Int
-  dataEMISSÃO DateTime
-  Valor_Total Int
-  id_pagamento Int
-  Pagamento pagamento @relation(fields: [id_pagamento], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("fatura")
-}
-
-model recibo {
-  id Int @id @default(autoincrement())
-  NrRecibo Int
-  dataEmissão DateTime
-  id_pagamento Int
-  Pagamento pagamento @relation(fields: [id_pagamento], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("recibo")
-}
-
-model notificacao{
-  id Int @id @default(autoincrement())
-  tipo_notificacoes String @db.VarChar(100)
-  data_envio DateTime
-  informacao String @db.VarChar(100)
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("notificacao")
-}
-
-
-
-
-model presenca {
-  id Int @id @default(autoincrement())
-  data_presenca DateTime
-  status_presenca String @db.VarChar(1)
-  id_aluno Int
-  Aluno aluno @relation(fields: [id_aluno], references: [id])
-  id_disciplina Int
-  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
-  create_at DateTime @default(now()) @db.Timestamp(6)
-  update_at DateTime @updatedAt
-
-  @@map("presenca")
+  @@map("notificacoes")
 }
 
 model cargo{
   id Int @id @default(autoincrement())
   nome String @db.VarChar(100)
-  descricao String @db.VarChar(100)
+  descricao String @db.LongText
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
@@ -196,65 +32,298 @@ model cargo{
 }
 
 
-model historico_matricula{
+model documento{
   id Int @id @default(autoincrement())
-  id_aluno Int
-  Aluno aluno @relation(fields: [id_aluno], references: [id])
-  id_matricula Int
-  Matricula matricula @relation(fields: [id_matricula], references: [id])
+  tipo_documento String @db.VarChar(100)
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
-  @@map("historico_matricula")
+
+  @@map("documento")
 }
 
-model faculdades{
+
+model professor{
   id Int @id @default(autoincrement())
-  tipos_faculdades String @db.VarChar(100)
-  Cursos curso[]
+  nome String @db.VarChar(100)
+  bi_passaporte String @db.VarChar(50)
+  telefone String @db.VarChar(20)
+  email String @db.VarChar(100)
+  Curso curso[]
+  Avaliacao avaliacao[]
+  Turmaprof turmaprof[]
+  Disciprof disciprof[]
+  Cursoprof cursoprof[]
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
-  @@map("faculdades")
+  @@map("professor")
+}
+
+
+model disciplina{
+  id Int @id @default(autoincrement())
+  tipo_disciplina String @db.VarChar(100)
+  Presenca presenca[]
+  Turmadisci turmadisci[]
+  Disciprof disciprof[]
+  Discicurso discicurso[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("disciplina")
+}
+
+model fatura{
+  id Int @id @default(autoincrement())
+  data_emissao DateTime @db.Date
+  valor_total Decimal @db.Decimal(10,2)
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  Itensfatura itensfatura[]
+  Pagamento pagamento[]
+
+  
+  @@map("fatura")
 }
 
 model emolumento{
   id Int @id @default(autoincrement())
-  referencia Int
-  Pagamentos pagamento []
+  referencia Int @db.Int
+  valor Decimal @db.Decimal(10,2)
+  Itensfatura itensfatura[]
+  Pagamento pagamento[]
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
   @@map("emolumento")
 }
 
-model relatorio{
+
+model faculdades{
   id Int @id @default(autoincrement())
-  tipo_relatorio String @db.VarChar(100)
-  data_geracao DateTime
+  tipos_faculdades String @db.VarChar(100)
+  Curso curso[]
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
 
-  @@map("relatorio")
+  @@map("faculdades")
+}
+
+model aluno{
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  dataNasc DateTime @db.Date
+  genero String @db.VarChar(20)
+  morada String @db.VarChar(200)
+  telefone String @db.VarChar(20)
+  idade Int @db.Int
+  id_turma Int @db.Int
+  Turma turma @relation(fields: [id_turma], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  Avaliacao avaliacao[]
+  Pagamento pagamento[]
+  Matricula matricula[]
+  Presenca presenca[]
+  Historico_matricula historico_matricula[]
+
+  @@map("aluno")
+}
+
+
+model turma{
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  id_curso Int @db.Int
+  Curso curso @relation(fields: [id_curso], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  Aluno aluno[]
+  Turmadisci turmadisci[]
+  Turmaprof turmaprof[]
+
+  @@map("turma")
+}
+
+model curso{
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(100)
+  duracao String @db.VarChar(50)
+  id_faculdades Int @db.Int
+  Faculdades faculdades @relation(fields: [id_faculdades], references: [id])
+  id_professor Int @db.Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  Turma turma[]
+  Discicurso discicurso[]
+  Cursoprof cursoprof[]
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("curso")
+}
+
+
+
+model avaliacao{
+  id Int @id @default(autoincrement())
+  tipo_avaliacao String @db.VarChar(100)
+  nota Int @db.Int
+  data_avaliacao DateTime @db.Date
+  id_aluno Int @db.Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  id_professor Int @db.Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("avaliacao")
+}
+
+
+model itensfatura{
+  id Int @id @default(autoincrement())
+  valortotal Decimal @db.Decimal(10,2)
+  nr_fatura Int @db.Int
+  id_fatura Int @db.Int
+  Fatura fatura @relation(fields: [id_fatura], references: [id])
+  id_emolumento Int @db.Int
+  Emolumento emolumento @relation(fields: [id_emolumento], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("itensfatura")
+}
+
+
+model pagamento{
+  id Int @id @default(autoincrement())
+  metodo_pagamento String @db.VarChar(100)
+  data_pagamento DateTime @db.Date
+  valor Decimal @db.Decimal(20,2)
+  id_aluno Int @db.Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  id_emolumento Int @db.Int
+  Emolumento emolumento @relation(fields: [id_emolumento], references: [id])
+  id_fatura Int @db.Int
+  Fatura fatura @relation(fields: [id_fatura], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("pagamento")
 }
 
 model matricula{
   id Int @id @default(autoincrement())
-  ano_letivo Int
-  data_matricula DateTime
-  estado_matricula String @db.VarChar(100)
-  Historico_matriculas historico_matricula []
+  ano_lectivo String @db.VarChar(50)
+  data_matricula DateTime @db.Date
+  estado_matricula String @db.VarChar(50)
+  id_aluno Int @db.Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  Historico_matricula historico_matricula[]
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
+
+
 
   @@map("matricula")
 }
 
 
+model historico_matricula{
+  id Int @id @default(autoincrement())
+  id_aluno Int @db.Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  id_matricula Int @db.Int
+  Matricula matricula @relation(fields: [id_matricula], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  
+  @@map("historico_matricula")
+  }
+
+
+model presenca{
+  id Int @id @default(autoincrement())
+  data_presenca DateTime @db.Date
+  status String @db.VarChar(50)
+  id_aluno Int @db.Int
+  Aluno aluno @relation(fields: [id_aluno], references: [id])
+  id_disciplina Int @db.Int
+  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
 
 
 
+@@map("presenca")
+}
+
+
+model turmadisci{
+  id Int @id @default(autoincrement())
+  id_turma Int @db.Int
+  Turma turma @relation(fields: [id_turma], references: [id])
+  id_disciplina Int @db.Int
+  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
 
 
 
+  @@map("turmadisci")
+}
+
+
+model turmaprof{
+  id Int @id @default(autoincrement())
+  id_turma Int @db.Int
+  Turma turma @relation(fields: [id_turma], references: [id])
+  id_professor Int @db.Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  
+  @@map("turmaprof")
+}
+
+
+model disciprof{
+  id Int @id @default(autoincrement())
+  id_disciplina Int @db.Int
+  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
+  id_professor Int @db.Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+  
+  @@map("disciprof")
+}
+
+
+model discicurso{
+  id Int @id @default(autoincrement())
+  id_disciplina Int @db.Int
+  Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
+  id_curso Int @db.Int
+  Curso curso @relation(fields: [id_curso], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("discicurso")
+}
+
+
+
+model cursoprof{
+  id Int @id @default(autoincrement())
+  id_curso Int @db.Int
+  Curso curso @relation(fields: [id_curso], references: [id])
+  id_professor Int @db.Int
+  Professor professor @relation(fields: [id_professor], references: [id])
+  create_at DateTime @default(now()) @db.Timestamp(6)
+  update_at DateTime @updatedAt
+
+  @@map("cursoprof")
+}
 
