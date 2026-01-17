@@ -4,27 +4,18 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
-    "generate": "prisma generate"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end/issues"
-  },
-  "homepage": "https://github.com/zayed-19/gest-o-de-um-sistema-acad-mico-Universit-rio-Back-end#readme",
   "dependencies": {
-    "@prisma/client": "^7.0.1",
+    "@prisma/client": "^6.18.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "prisma": "^7.0.1",
-    "nodemon": "^3.0.0"
+    "prisma": "^6.18.0"
   }
 }

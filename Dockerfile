@@ -1,15 +1,14 @@
-FROM node:20.19.0
+FROM node:20.18.0
 
+RUN mkdir -p /home/app/node_modules && chown -R node:node /home/app
 WORKDIR /home/app
+USER node
+COPY --chown=node:node . .
 
-COPY package*.json ./
-COPY prisma.config.ts ./
-
+COPY package.json .
 
 RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
-
-CMD ["npm", "start"]
+CMD  npm start
