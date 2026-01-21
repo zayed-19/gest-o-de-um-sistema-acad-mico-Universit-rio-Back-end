@@ -6,11 +6,11 @@ const alunoRoutes = express.Router();
 const alunoController = new AlunoController();
 
 // Define a rota
-alunoRoutes.get("/aluno", new alunoController.get());
-alunoRoutes.post("/aluno", new AlunoController().create);
-alunoRoutes.get("/aluno/:id", new AlunoController().getById);
-alunoRoutes.put("/aluno/:id", new AlunoController().update);
-alunoRoutes.delete("/aluno/:id", new AlunoController().delete);
+alunoRoutes.get("/aluno", alunoController.get);
+alunoRoutes.post("/aluno", alunoController.create);
+alunoRoutes.get("/aluno/:id", alunoController.getById);
+alunoRoutes.put("/aluno/:id", alunoController.update);
+alunoRoutes.delete("/aluno/:id", alunoController.delete);
 
 // Exporta corretamente
 module.exports = alunoRoutes;

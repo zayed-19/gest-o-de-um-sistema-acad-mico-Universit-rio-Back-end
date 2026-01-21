@@ -3,14 +3,14 @@ const DisciplinaController = require("../controllers/DisciplinaController");
 
 const disciplinaRoutes = express.Router();
 
-const DisciplinaController = new DisciplinaController();
+const disciplinaController = new DisciplinaController();
 
 // Define a rota
-disciplinaRoutes.get("/disciplina", DisciplinaController.get);
-disciplinaRoutes.post("/disciplina", new DisciplinaController().create);
-disciplinaRoutes.get("/disciplina/:id", new DisciplinaController().getById);
-disciplinaRoutes.put("/disciplina/:id", new DisciplinaController().update);
-disciplinaRoutes.delete("/disciplina/:id", new DisciplinaController().delete);
+disciplinaRoutes.get("/disciplina", disciplinaController.get);
+disciplinaRoutes.post("/disciplina", disciplinaController.create);
+disciplinaRoutes.get("/disciplina/:id", disciplinaController.getById);
+disciplinaRoutes.put("/disciplina/:id", disciplinaController.update);
+disciplinaRoutes.delete("/disciplina/:id", disciplinaController.delete);
 
 // Exporta corretamente
 module.exports = disciplinaRoutes;

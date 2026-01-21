@@ -3,14 +3,14 @@ const CursoprofController = require("../controllers/CursoprofController");
 
 const cursoprofRoutes = express.Router();
 
-const CursoprofController = new CursoprofController();
+const cursoprofController = new CursoprofController();
 
 // Define a rota
-cursoprofRoutes.get("/cursoprof", CursoprofController.get);
-cursoprofRoutes.post("/cursoprof", new CursoprofController().create);
-cursoprofRoutes.get("/cursoprof/:id", new CursoprofController().getById);
-cursoprofRoutes.put("/cursoprof/:id", new CursoprofController().update);
-cursoprofRoutes.delete("/cursoprof/:id", new CursoprofController().delete);
+cursoprofRoutes.get("/cursoprof", cursoprofController.get);
+cursoprofRoutes.post("/cursoprof", cursoprofController.create);
+cursoprofRoutes.get("/cursoprof/:id", cursoprofController.getById);
+cursoprofRoutes.put("/cursoprof/:id", cursoprofController.update);
+cursoprofRoutes.delete("/cursoprof/:id", cursoprofController.delete);
 
 // Exporta corretamente
 module.exports = cursoprofRoutes;

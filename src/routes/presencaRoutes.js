@@ -3,14 +3,14 @@ const PresencaController = require("../controllers/PresencaController");
 
 const presencaRoutes = express.Router();
 
-const PresencaController = new PresencaController();
+const presencaController = new PresencaController();
 
 // Define a rota
-presencaRoutes.get("/presenca", PresencaController.get);
-presencaRoutes.post("/presenca", new PresencaController().create);
-presencaRoutes.get("/presenca/:id", new PresencaController().getById);
-presencaRoutes.put("/presenca/:id", new PresencaController().update);
-presencaRoutes.delete("/presenca/:id", new PresencaController().delete);
+presencaRoutes.get("/presenca", presencaController.get);
+presencaRoutes.post("/presenca", presencaController.create);
+presencaRoutes.get("/presenca/:id", presencaController.getById);
+presencaRoutes.put("/presenca/:id", presencaController.update);
+presencaRoutes.delete("/presenca/:id", presencaController.delete);
 
 // Exporta corretamente
 module.exports = presencaRoutes;

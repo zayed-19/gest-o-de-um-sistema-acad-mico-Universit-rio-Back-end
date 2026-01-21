@@ -3,14 +3,14 @@ const TurmaController = require("../controllers/TurmaController");
 
 const turmaRoutes = express.Router();
 
-const TurmaController = new TurmaController();
+const turmaController = new TurmaController();
 
 // Define a rota
-turmaRoutes.get("/turma", TurmaController.get);
-turmaRoutes.post("/turma", new TurmaController().create);
-turmaRoutes.get("/turma/:id", new TurmaController().getById);
-turmaRoutes.put("/turma/:id", new TurmaController().update);
-turmaRoutes.delete("/turma/:id", new TurmaController().delete);
+turmaRoutes.get("/turma", turmaController.get);
+turmaRoutes.post("/turma", turmaController.create);
+turmaRoutes.get("/turma/:id", turmaController.getById);
+turmaRoutes.put("/turma/:id", turmaController.update);
+turmaRoutes.delete("/turma/:id", turmaController.delete);
 
 // Exporta corretamente
 module.exports = turmaRoutes;

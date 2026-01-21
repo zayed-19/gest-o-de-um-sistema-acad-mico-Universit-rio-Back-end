@@ -3,14 +3,14 @@ const CargoController = require("../controllers/CargoController");
 
 const cargoRoutes = express.Router();
 
-const CargoController = new CargoController();
+const cargoController = new CargoController();
 
 // Define a rota
-cargoRoutes.get("/cargo", CargoController.get);
-cargoRoutes.post("/cargo", new CargoController().create);
-cargoRoutes.get("/cargo/:id", new CargoController().getById);
-cargoRoutes.put("/cargo/:id", new CargoController().update);
-cargoRoutes.delete("/cargo/:id", new CargoController().delete);
+cargoRoutes.get("/cargo", cargoController.get);
+cargoRoutes.post("/cargo", cargoController.create);
+cargoRoutes.get("/cargo/:id", cargoController.getById);
+cargoRoutes.put("/cargo/:id", cargoController.update);
+cargoRoutes.delete("/cargo/:id", cargoController.delete);
 
 // Exporta corretamente
 module.exports = cargoRoutes;

@@ -3,14 +3,14 @@ const DocumentoController = require("../controllers/DocumentoController");
 
 const documentoRoutes = express.Router();
 
-const DocumentoController = new DocumentoController();
+const documentoController = new DocumentoController();
 
 // Define a rota
-documentoRoutes.get("/documento", DocumentoController.get);
-documentoRoutes.post("/documento", new DocumentoController().create);
-documentoRoutes.get("/documento/:id", new DocumentoController().getById);
-documentoRoutes.put("/documento/:id", new DocumentoController().update);
-documentoRoutes.delete("/documento/:id", new DocumentoController().delete);
+documentoRoutes.get("/documento", documentoController.get);
+documentoRoutes.post("/documento", documentoController.create);
+documentoRoutes.get("/documento/:id", documentoController.getById);
+documentoRoutes.put("/documento/:id", documentoController.update);
+documentoRoutes.delete("/documento/:id", documentoController.delete);
 
 // Exporta corretamente
 module.exports = documentoRoutes;

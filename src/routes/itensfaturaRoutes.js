@@ -3,17 +3,14 @@ const ItensFaturaController = require("../controllers/ItensFaturaController");
 
 const itensfaturaRoutes = express.Router();
 
-const ItensFaturaController = new ItensFaturaController();
+const itensFaturaController = new ItensFaturaController();
 
 // Define a rota
-itensfaturaRoutes.get("/itensfatura", ItensFaturaController.get);
-itensfaturaRoutes.post("/itensfatura", new ItensFaturaController().create);
-itensfaturaRoutes.get("/itensfatura/:id", new ItensFaturaController().getById);
-itensfaturaRoutes.put("/itensfatura/:id", new ItensFaturaController().update);
-itensfaturaRoutes.delete(
-  "/itensfatura/:id",
-  new ItensFaturaController().delete,
-);
+itensfaturaRoutes.get("/itensfatura", itensFaturaController.get);
+itensfaturaRoutes.post("/itensfatura", itensFaturaController.create);
+itensfaturaRoutes.get("/itensfatura/:id", itensFaturaController.getById);
+itensfaturaRoutes.put("/itensfatura/:id", itensFaturaController.update);
+itensfaturaRoutes.delete("/itensfatura/:id", itensFaturaController.delete);
 
 // Exporta corretamente
 module.exports = itensfaturaRoutes;

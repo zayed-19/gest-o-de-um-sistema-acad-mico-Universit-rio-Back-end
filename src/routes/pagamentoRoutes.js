@@ -3,14 +3,14 @@ const PagamentoController = require("../controllers/PagamentoController");
 
 const pagamentoRoutes = express.Router();
 
-const PagamentoController = new PagamentoController();
+const pagamentoController = new PagamentoController();
 
 // Define a rota
-pagamentoRoutes.get("/pagamento", PagamentoController.get);
-pagamentoRoutes.post("/pagamento", new PagamentoController().create);
-pagamentoRoutes.get("/pagamento/:id", new PagamentoController().getById);
-pagamentoRoutes.put("/pagamento/:id", new PagamentoController().update);
-pagamentoRoutes.delete("/pagamento/:id", new PagamentoController().delete);
+pagamentoRoutes.get("/pagamento", pagamentoController.get);
+pagamentoRoutes.post("/pagamento", pagamentoController.create);
+pagamentoRoutes.get("/pagamento/:id", pagamentoController.getById);
+pagamentoRoutes.put("/pagamento/:id", pagamentoController.update);
+pagamentoRoutes.delete("/pagamento/:id", pagamentoController.delete);
 
 // Exporta corretamente
 module.exports = pagamentoRoutes;

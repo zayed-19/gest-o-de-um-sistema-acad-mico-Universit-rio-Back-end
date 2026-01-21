@@ -3,14 +3,14 @@ const DiscicursoController = require("../controllers/DiscicursoController");
 
 const discicursoRoutes = express.Router();
 
-const DiscicursoController = new DiscicursoController();
+const discicursoController = new DiscicursoController();
 
 // Define a rota
-discicursoRoutes.get("/discicurso", DiscicursoController.get);
-discicursoRoutes.post("/discicurso", new DiscicursoController().create);
-discicursoRoutes.get("/discicurso/:id", new DiscicursoController().getById);
-discicursoRoutes.put("/discicurso/:id", new DiscicursoController().update);
-discicursoRoutes.delete("/discicurso/:id", new DiscicursoController().delete);
+discicursoRoutes.get("/discicurso", discicursoController.get);
+discicursoRoutes.post("/discicurso", discicursoController.create);
+discicursoRoutes.get("/discicurso/:id", discicursoController.getById);
+discicursoRoutes.put("/discicurso/:id", discicursoController.update);
+discicursoRoutes.delete("/discicurso/:id", discicursoController.delete);
 
 // Exporta corretamente
 module.exports = discicursoRoutes;

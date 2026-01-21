@@ -7,10 +7,10 @@ const avaliacaoController = new AvaliacaoController();
 
 // Define a rota
 avaliacaoRoutes.get("/avaliacao", avaliacaoController.get);
-avaliacaoRoutes.post("/avaliacao", AvaliacaoController().create);
-avaliacaoRoutes.get("/avaliacao/:id", new AvaliacaoController().getById);
-avaliacaoRoutes.put("/avaliacao/:id", new AvaliacaoController().update);
-avaliacaoRoutes.delete("/avaliacao/:id", new AvaliacaoController().delete);
+avaliacaoRoutes.post("/avaliacao", avaliacaoController.create);
+avaliacaoRoutes.get("/avaliacao/:id", avaliacaoController.getById);
+avaliacaoRoutes.put("/avaliacao/:id", avaliacaoController.update);
+avaliacaoRoutes.delete("/avaliacao/:id", avaliacaoController.delete);
 
 // Exporta corretamente
 module.exports = avaliacaoRoutes;

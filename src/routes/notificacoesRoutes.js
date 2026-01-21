@@ -3,23 +3,14 @@ const NotificacoesController = require("../controllers/NotificacoesController");
 
 const notificacoesRoutes = express.Router();
 
-const NotificacoesController = new NotificacoesController();
+const notificacoesController = new NotificacoesController();
 
 // Define a rota
-notificacoesRoutes.get("/notificacoes", NotificacoesController.get);
-notificacoesRoutes.post("/notificacoes", new NotificacoesController().create);
-notificacoesRoutes.get(
-  "/notificacoes/:id",
-  new NotificacoesController().getById,
-);
-notificacoesRoutes.put(
-  "/notificacoes/:id",
-  new NotificacoesController().update,
-);
-notificacoesRoutes.delete(
-  "/notificacoes/:id",
-  new NotificacoesController().delete,
-);
+notificacoesRoutes.get("/notificacoes", notificacoesController.get);
+notificacoesRoutes.post("/notificacoes", notificacoesController.create);
+notificacoesRoutes.get("/notificacoes/:id", notificacoesController.getById);
+notificacoesRoutes.put("/notificacoes/:id", notificacoesController.update);
+notificacoesRoutes.delete("/notificacoes/:id", notificacoesController.delete);
 
 // Exporta corretamente
 module.exports = notificacoesRoutes;

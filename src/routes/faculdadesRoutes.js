@@ -3,14 +3,14 @@ const FaculdadesController = require("../controllers/FaculdadesController");
 
 const faculdadesRoutes = express.Router();
 
-const FaculdadesController = new FaculdadesController();
+const faculdadesController = new FaculdadesController();
 
 // Define a rota
-faculdadesRoutes.get("/faculdades", FaculdadesController.get);
-faculdadesRoutes.post("/faculdades", new FaculdadesController().create);
-faculdadesRoutes.get("/faculdades/:id", new FaculdadesController().getById);
-faculdadesRoutes.put("/faculdades/:id", new FaculdadesController().update);
-faculdadesRoutes.delete("/faculdades/:id", new FaculdadesController().delete);
+faculdadesRoutes.get("/faculdades", faculdadesController.get);
+faculdadesRoutes.post("/faculdades", faculdadesController.create);
+faculdadesRoutes.get("/faculdades/:id", faculdadesController.getById);
+faculdadesRoutes.put("/faculdades/:id", faculdadesController.update);
+faculdadesRoutes.delete("/faculdades/:id", faculdadesController.delete);
 
 // Exporta corretamente
 module.exports = faculdadesRoutes;
