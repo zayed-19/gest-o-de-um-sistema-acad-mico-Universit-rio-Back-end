@@ -3,10 +3,10 @@ const AlunoController = require("../controllers/AlunoController");
 
 const alunoRoutes = express.Router();
 
-const AlunoController = new AlunoController();
+const alunoController = new AlunoController();
 
 // Define a rota
-alunoRoutes.get("/aluno", AlunoController.get);
+alunoRoutes.get("/aluno", new alunoController.get());
 alunoRoutes.post("/aluno", new AlunoController().create);
 alunoRoutes.get("/aluno/:id", new AlunoController().getById);
 alunoRoutes.put("/aluno/:id", new AlunoController().update);

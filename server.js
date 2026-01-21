@@ -1,4 +1,4 @@
-require("dotnev").config();
+require("dotenv").config();
 const express = require("express");
 const routesRoot = require("./src/routes/index");
 
