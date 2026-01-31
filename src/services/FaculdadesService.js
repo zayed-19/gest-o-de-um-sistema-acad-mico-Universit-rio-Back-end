@@ -6,7 +6,6 @@ const createFaculdade = async (data) => {
   const result = await Faculdade.create({
     data: {
       tipos_faculdades: data.tipos_faculdades,
-      Cursos: data.Cursos,
     },
   });
   return result;
@@ -26,7 +25,6 @@ const updateFaculdade = async (data, id) => {
   const result = await Faculdade.update({
     data: {
       tipos_faculdades: data.tipos_faculdades,
-      Cursos: data.Cursos,
     },
     where: { id },
   });

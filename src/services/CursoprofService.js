@@ -6,9 +6,7 @@ const createCursoprof = async (data) => {
   const result = await Cursoprof.create({
     data: {
       id_curso: data.id_curso,
-      Curso: data.Curso,
       id_professor: data.id_professor,
-      Professor: data.Professor,
     },
   });
   return result;
@@ -28,9 +26,7 @@ const updateCursoprof = async (data, id) => {
   const result = await Cursoprof.update({
     data: {
       id_curso: data.id_curso,
-      Curso: data.Curso,
       id_professor: data.id_professor,
-      Professor: data.Professor,
     },
     where: { id },
   });

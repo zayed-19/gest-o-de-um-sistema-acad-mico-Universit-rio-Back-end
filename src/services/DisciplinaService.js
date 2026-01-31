@@ -6,10 +6,6 @@ const createDisciplina = async (data) => {
   const result = await Disciplina.create({
     data: {
       tipo_disciplina: data.tipo_disciplina,
-      Presenca: data.Presenca,
-      Turmadisci: data.Turmadisci,
-      Discicurso: data.Discicurso,
-      Disciprof: data.Disciprof,
     },
   });
   return result;
@@ -29,10 +25,6 @@ const updateDisciplina = async (data, id) => {
   const result = await Disciplina.update({
     data: {
       tipo_disciplina: data.tipo_disciplina,
-      Presenca: data.Presenca,
-      Turmadisci: data.Turmadisci,
-      Discicurso: data.Discicurso,
-      Disciprof: data.Disciprof,
     },
     where: { id },
   });

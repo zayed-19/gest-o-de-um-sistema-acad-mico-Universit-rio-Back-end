@@ -268,14 +268,14 @@ model turmadisci{
   Disciplina disciplina @relation(fields: [id_disciplina], references: [id])
   create_at DateTime @default(now()) @db.Timestamp(6)
   update_at DateTime @updatedAt
-
-
+  
+  
 
   @@map("turmadisci")
 }
 
 
-model turmaprof{
+model turmaprof{  
   id Int @id @default(autoincrement())
   id_turma Int @db.Int
   Turma turma @relation(fields: [id_turma], references: [id])

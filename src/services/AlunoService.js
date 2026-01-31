@@ -12,12 +12,6 @@ const createAluno = async (data) => {
       telefone: data.telefone,
       idade: data.idade,
       id_turma: data.id_turma,
-      Turma: data.turma,
-      Avaliacao: data.Avaliacao,
-      Pagamento: data.Pagamento,
-      Matricula: data.Matricula,
-      Presenca: data.Presenca,
-      Historico_matricula: data.Historico_matricula,
     },
   });
   return result;
@@ -41,12 +35,6 @@ const updateAluno = async (data, id) => {
       telefone: data.telefone,
       idade: data.idade,
       id_turma: data.id_turma,
-      Turma: data.turma,
-      Avaliacao: data.Avaliacao,
-      Pagamento: data.Pagamento,
-      Matricula: data.Matricula,
-      Presenca: data.Presenca,
-      Historico_matricula: data.Historico_matricula,
     },
     where: { id },
   });

@@ -7,10 +7,6 @@ const createTurma = async (data) => {
     data: {
       nome: data.nome,
       id_curso: data.id_curso,
-      Curso: data.Cursos,
-      Aluno: data.Aluno,
-      Turmadisci: data.Turmadisci,
-      Turmaprof: data.Turmaprof,
     },
   });
   return result;
@@ -31,10 +27,6 @@ const updateTurma = async (data, id) => {
     data: {
       nome: data.nome,
       id_curso: data.id_curso,
-      Curso: data.Cursos,
-      Aluno: data.Aluno,
-      Turmadisci: data.Turmadisci,
-      Turmaprof: data.Turmaprof,
     },
     where: { id },
   });

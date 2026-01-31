@@ -6,9 +6,7 @@ const createTurmadisci = async (data) => {
   const result = await Turmadisci.create({
     data: {
       id_disciplina: data.id_disciplina,
-      Disciplina: data.Disciplina,
       id_turma: data.id_turma,
-      Turma: data.Turma,
     },
   });
   return result;
@@ -28,9 +26,7 @@ const updateTurmadisci = async (data, id) => {
   const result = await Turmadisci.update({
     data: {
       id_disciplina: data.id_disciplina,
-      Disciplina: data.Disciplina,
       id_turma: data.id_turma,
-      Turma: data.Turma,
     },
     where: { id },
   });

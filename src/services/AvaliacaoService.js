@@ -9,9 +9,7 @@ const createAvaliacao = async (data) => {
       nota: data.nota,
       data_avaliacao: data.data_avaliacao,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_professor: data.id_professor,
-      Professor: data.Professor,
     },
   });
   return result;
@@ -34,9 +32,7 @@ const updateAvaliacao = async (data, id) => {
       nota: data.nota,
       data_avaliacao: data.data_avaliacao,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_professor: data.id_professor,
-      Professor: data.Professor,
     },
     where: { id },
   });

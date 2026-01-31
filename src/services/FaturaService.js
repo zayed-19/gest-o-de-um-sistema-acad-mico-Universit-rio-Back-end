@@ -6,9 +6,7 @@ const createFatura = async (data) => {
   const result = await Fatura.create({
     data: {
       data_emissao: data.data_emissao,
-      valor: data.valor,
-      Itensfatura: data.Itensfatura,
-      Pagamento: data.Pagamento,
+      valor_total: data.valor_total,
     },
   });
   return result;
@@ -28,9 +26,7 @@ const updateFatura = async (data, id) => {
   const result = await Fatura.update({
     data: {
       data_emissao: data.data_emissao,
-      valor: data.valor,
-      Itensfatura: data.Itensfatura,
-      Pagamento: data.Pagamento,
+      valor_total: data.valor_total,
     },
     where: { id },
   });

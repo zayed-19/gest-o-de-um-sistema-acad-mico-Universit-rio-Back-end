@@ -6,9 +6,7 @@ const createHistorico_matricula = async (data) => {
   const result = await Historico_matricula.create({
     data: {
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_matricula: data.id_matricula,
-      Matricula: data.Matricula,
     },
   });
   return result;
@@ -28,9 +26,7 @@ const updateHistorico_matricula = async (data, id) => {
   const result = await Historico_matricula.update({
     data: {
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_matricula: data.id_matricula,
-      Matricula: data.Matricula,
     },
     where: { id },
   });

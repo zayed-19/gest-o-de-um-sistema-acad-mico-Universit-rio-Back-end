@@ -8,12 +8,7 @@ const createCurso = async (data) => {
       nome: data.nome,
       duracao: data.duracao,
       id_faculdades: data.id_faculdades,
-      Faculdades: data.Faculdades,
       id_professor: data.id_professor,
-      Professor: data.Professor,
-      Turma: data.Turma,
-      Discicurso: data.Discicurso,
-      Cursoprof: data.Cursoprof,
     },
   });
   return result;

@@ -9,11 +9,6 @@ const createProfessor = async (data) => {
       bi_passaporte: data.bi_passaporte,
       telefone: data.telefone,
       email: data.email,
-      Curso: data.curso,
-      Avaliacao: data.avaliacao,
-      Turmaprof: data.turmaprof,
-      Disciprof: data.disciprof,
-      Cursoprof: data.cursoprof,
     },
   });
   return result;
@@ -36,11 +31,6 @@ const updateProfessor = async (data, id) => {
       bi_passaporte: data.bi_passaporte,
       telefone: data.telefone,
       email: data.email,
-      Curso: data.curso,
-      Avaliacao: data.avaliacao,
-      Turmaprof: data.turmaprof,
-      Disciprof: data.disciprof,
-      Cursoprof: data.cursoprof,
     },
     where: { id },
   });

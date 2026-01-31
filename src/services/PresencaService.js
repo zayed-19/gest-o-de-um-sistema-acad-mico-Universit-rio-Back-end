@@ -8,9 +8,7 @@ const createPresenca = async (data) => {
       data_presenca: data.data_presenca,
       status: data.status,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_disciplina: data.id_disciplina,
-      Disciplina: data.Disciplina,
     },
   });
   return result;
@@ -32,9 +30,7 @@ const updatePresenca = async (data, id) => {
       data_presenca: data.data_presenca,
       status: data.status,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_disciplina: data.id_disciplina,
-      Disciplina: data.Disciplina,
     },
     where: { id },
   });

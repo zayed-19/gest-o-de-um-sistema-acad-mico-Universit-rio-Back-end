@@ -9,11 +9,8 @@ const createPagamento = async (data) => {
       data_pagamento: data.data_pagamento,
       valor: data.valor,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_emolumento: data.id_emolumento,
-      Emolumento: data.Emolumento,
       id_fatura: data.id_fatura,
-      Fatura: data.Fatura,
     },
   });
   return result;
@@ -36,11 +33,8 @@ const updatePagamento = async (data, id) => {
       data_pagamento: data.data_pagamento,
       valor: data.valor,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
       id_emolumento: data.id_emolumento,
-      Emolumento: data.Emolumento,
       id_fatura: data.id_fatura,
-      Fatura: data.Fatura,
     },
     where: { id },
   });

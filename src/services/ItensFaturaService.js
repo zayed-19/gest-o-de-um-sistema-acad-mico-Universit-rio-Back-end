@@ -8,9 +8,7 @@ const createItensFatura = async (data) => {
       valortotal: data.valortotal,
       nr_fatura: data.nr_fatura,
       id_fatura: data.id_fatura,
-      Fatura: data.Fatura,
       id_emolumento: data.id_emolumento,
-      Emolumento: data.Emolumento,
     },
   });
   return result;
@@ -32,9 +30,7 @@ const updateItensFatura = async (data, id) => {
       valortotal: data.valortotal,
       nr_fatura: data.nr_fatura,
       id_fatura: data.id_fatura,
-      Fatura: data.Fatura,
       id_emolumento: data.id_emolumento,
-      Emolumento: data.Emolumento,
     },
     where: { id },
   });

@@ -9,8 +9,6 @@ const createMatricula = async (data) => {
       data_matricula: data.data_matricula,
       estado_matricula: data.estado_matricula,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
-      Historico_matricula: data.Historico_matricula,
     },
   });
   return result;
@@ -33,8 +31,6 @@ const updateMatricula = async (data, id) => {
       data_matricula: data.data_matricula,
       estado_matricula: data.estado_matricula,
       id_aluno: data.id_aluno,
-      Aluno: data.Aluno,
-      Historico_matricula: data.Historico_matricula,
     },
     where: { id },
   });

@@ -6,9 +6,7 @@ const createTurmaprof = async (data) => {
   const result = await Turmaprof.create({
     data: {
       id_professor: data.id_professor,
-      Professor: data.Professor,
       id_turma: data.id_turma,
-      Turma: data.Turma,
     },
   });
   return result;
@@ -28,9 +26,7 @@ const updateTurmaprof = async (data, id) => {
   const result = await Turmaprof.update({
     data: {
       id_professor: data.id_professor,
-      Professor: data.Professor,
       id_turma: data.id_turma,
-      Turma: data.Turma,
     },
     where: { id },
   });

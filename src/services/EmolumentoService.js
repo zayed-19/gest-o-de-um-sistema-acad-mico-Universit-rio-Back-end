@@ -7,8 +7,6 @@ const createEmolumento = async (data) => {
     data: {
       referencia: data.referencia,
       valor: data.valor,
-      Itensfatura: data.Itensfatura,
-      Pagamento: data.Pagamento,
     },
   });
   return result;
@@ -29,8 +27,6 @@ const updateEmolumento = async (data, id) => {
     data: {
       referencia: data.referencia,
       valor: data.valor,
-      Itensfatura: data.Itensfatura,
-      Pagamento: data.Pagamento,
     },
     where: { id },
   });
