@@ -23,6 +23,7 @@ const professorRoutes = require("./professorRoutes");
 const turmadisciRoutes = require("./turmadisciRoutes");
 const turmaprofRoutes = require("./turmaprofRoutes");
 const turmaRoutes = require("./turmaRoutes");
+const authRoutes = require("./authRoutes");
 
 //adicionar os outros ficheiros de rota aqui
 
@@ -48,6 +49,7 @@ routesRoot.use(professorRoutes);
 routesRoot.use(turmadisciRoutes);
 routesRoot.use(turmaprofRoutes);
 routesRoot.use(turmaRoutes);
+routesRoot.use(authRoutes);
 
 //replicar para todos os outros ficheiros
 

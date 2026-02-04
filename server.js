@@ -1,4 +1,4 @@
-require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 const routesRoot = require("./src/routes/index");
 
@@ -8,6 +8,8 @@ const PORT = 3002;
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/v1", routesRoot);
