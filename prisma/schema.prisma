@@ -116,7 +116,7 @@ model aluno{
   dataNasc DateTime @db.Date
   genero String @db.VarChar(20)
   morada String @db.VarChar(200)
-  telefone String @db.VarChar(20)
+  telefone Int @db.Int
   idade Int @db.Int
   id_turma Int @db.Int
   Turma turma @relation(fields: [id_turma], references: [id])
